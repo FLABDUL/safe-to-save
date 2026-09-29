@@ -1,0 +1,7 @@
+{
+  "dataset_id": "synthetic-v2",
+  "account_id": "synthetic-current",
+  "currency": "GBP",
+  "coverage_start": "2025-09-01T00:00:00Z",
+  "coverage_end": "2026-05-01T00:00:00Z"
+}

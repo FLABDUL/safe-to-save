@@ -1,0 +1,3 @@
+{"commitment_id":"synthetic-commitment-001","known_from":"2025-09-01T00:00:00Z","due_at":"2025-09-09T08:00:00Z","amount_minor":-85000,"description":"Synthetic Housing"}
+{"commitment_id":"synthetic-commitment-002","known_from":"2025-09-01T00:00:00Z","due_at":"2025-09-18T08:00:00Z","amount_minor":-3200,"description":"Synthetic Utility"}
+{"commitment_id":"synthetic-commitment-003","known_from":"2025-11-01T00:00:00Z","due_at":"2025-11-12T08:00:00Z","amount_minor":-1800,"description":"Synthetic Subscription"}

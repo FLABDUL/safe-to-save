@@ -1,0 +1,17 @@
+{
+  "illustrative_only": true,
+  "history_files": {
+    "manifest": "manifest.json",
+    "transactions": "transactions.jsonl",
+    "anchors": "anchors.jsonl",
+    "paydays": "paydays.jsonl",
+    "commitments": "commitments.jsonl"
+  },
+  "review_schedule": {
+    "timezone": "Europe/London",
+    "weekday": 6,
+    "hour": 18
+  },
+  "risk_floor_minor": 25000,
+  "note": "Every filename, schedule and amount in this example is illustrative and synthetic."
+}
