@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
       DATABASE_URL: postgresql://sts_ci:sts_ci_password@127.0.0.1:55433/safe_to_save

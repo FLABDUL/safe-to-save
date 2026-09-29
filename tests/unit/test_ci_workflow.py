@@ -8,6 +8,7 @@ def test_ci_workflow_preserves_project_verification_contract() -> None:
     assert "pull_request_target" not in workflow
     assert "cancel-in-progress: true" in workflow
     assert "timeout-minutes: 15" in workflow
+    assert "runs-on: ubuntu-24.04" in workflow
     assert "uses: actions/checkout@v7" in workflow
     assert "uses: actions/setup-python@v7" in workflow
     assert "python-version: \"3.11\"" in workflow
