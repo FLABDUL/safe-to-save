@@ -16,7 +16,11 @@ function Assert-TaskPath([string]$Path) {
     while ($candidate.Length -gt $project.Length) {
         if (Test-Path -LiteralPath $candidate) {
             $item = Get-Item -Force -LiteralPath $candidate
-            if ($item.Attributes -band [IO.FileAttributes]::ReparsePoint) {
+            # OneDrive marks hydrated directories as reparse points without making
+            # them links. Reject only entries that actually resolve through a link
+            # or junction; the project boundary and cluster marker are checked below.
+            if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -and
+                ($item.LinkType -or $item.Target)) {
                 throw 'Database paths must not traverse links or junctions.'
             }
         }
