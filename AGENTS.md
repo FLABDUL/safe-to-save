@@ -17,11 +17,21 @@ service, serve a dashboard, use an LLM or probabilistic model, or move money.
   and labelled synthetic.
 - Missing balance anchors, coverage, paydays, valid risk floors or baselines
   must produce an explicit withheld result, never a fabricated zero.
+- Gate A configuration and every input path must resolve beneath `data/private/`;
+  canonical output and reports must resolve beneath `outputs/private/`.
+- Gate A terminal output stays aggregate-only. Never emit row values, source
+  identifiers, descriptions, merchant text, paths, credentials or floors.
+- Inspect real exports only through ignored private paths. Public fixtures and
+  documentation must be wholly invented and explicitly labelled synthetic.
 
 ## Database boundary
 
 Use the dedicated PostgreSQL cluster at `127.0.0.1:55433`, database
 `safe_to_save`. Never share Budget V2's cluster or tables.
+
+`gate-a prepare` must remain database-independent. `evaluate` alone creates
+replays; `assess` verifies saved evidence and must not create replay runs. Keep
+evaluation evidence and final assessment reports in separate output children.
 
 ## Verification
 

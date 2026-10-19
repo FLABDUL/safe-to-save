@@ -1,0 +1,7 @@
+{"commitment_id":"synthetic-commitment-1","known_from":"2025-09-01T00:00:00Z","due_at":"2025-10-05T12:00:00Z","amount_minor":-10000,"description":"Invented synthetic utility commitment"}
+{"commitment_id":"synthetic-commitment-2","known_from":"2025-11-01T00:00:00Z","due_at":"2025-11-05T12:00:00Z","amount_minor":-10000,"description":"Invented synthetic utility commitment"}
+{"commitment_id":"synthetic-commitment-3","known_from":"2025-12-01T00:00:00Z","due_at":"2025-12-05T12:00:00Z","amount_minor":-10000,"description":"Invented synthetic utility commitment"}
+{"commitment_id":"synthetic-commitment-4","known_from":"2026-01-01T00:00:00Z","due_at":"2026-01-05T12:00:00Z","amount_minor":-10000,"description":"Invented synthetic utility commitment"}
+{"commitment_id":"synthetic-commitment-5","known_from":"2026-02-01T00:00:00Z","due_at":"2026-02-05T12:00:00Z","amount_minor":-10000,"description":"Invented synthetic utility commitment"}
+{"commitment_id":"synthetic-commitment-6","known_from":"2026-03-01T00:00:00Z","due_at":"2026-03-05T12:00:00Z","amount_minor":-10000,"description":"Invented synthetic utility commitment"}
+{"commitment_id":"synthetic-commitment-7","known_from":"2026-04-01T00:00:00Z","due_at":"2026-04-05T12:00:00Z","amount_minor":-10000,"description":"Invented synthetic utility commitment"}
