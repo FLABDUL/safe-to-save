@@ -4,8 +4,122 @@ from pathlib import Path
 import pytest
 
 from safe_to_save.balances import CoverageError, reconstruct_balance_minor
+from safe_to_save.contracts import HistoryBundle, HistoryManifest
+from safe_to_save.gate_prepare import validate_anchor_reconciliation
 from safe_to_save.history import load_history
 from tests.factories import balance_anchor, manifest, transaction
+
+
+def test_validation_requires_anchors_at_both_coverage_boundaries() -> None:
+    history_manifest = HistoryManifest(
+        dataset_id="synthetic-v2",
+        account_id="synthetic-current",
+        currency="GBP",
+        coverage_start="2026-01-01T00:00:00Z",
+        coverage_end="2026-02-01T00:00:00Z",
+    )
+    bundle = HistoryBundle(
+        manifest=history_manifest,
+        raw_records=(),
+        transactions=(),
+        anchors=(balance_anchor(history_manifest.coverage_start.isoformat(), 100_000),),
+        paydays=(),
+        commitments=(),
+    )
+
+    with pytest.raises(CoverageError, match="coverage boundary"):
+        validate_anchor_reconciliation(bundle)
+
+
+def test_validation_reconciles_every_signed_flow() -> None:
+    history_manifest = HistoryManifest(
+        dataset_id="synthetic-v2",
+        account_id="synthetic-current",
+        currency="GBP",
+        coverage_start="2026-01-01T00:00:00Z",
+        coverage_end="2026-02-01T00:00:00Z",
+    )
+    rows = (
+        transaction("expense", "2026-01-10T00:00:00Z", -2_000),
+        transaction("income", "2026-01-11T00:00:00Z", 5_000, "income"),
+        transaction("transfer", "2026-01-12T00:00:00Z", -1_000, "internal_transfer"),
+    )
+    validate_anchor_reconciliation(HistoryBundle(
+        manifest=history_manifest,
+        raw_records=(),
+        transactions=rows,
+        anchors=(
+            balance_anchor(history_manifest.coverage_start.isoformat(), 100_000),
+            balance_anchor(history_manifest.coverage_end.isoformat(), 102_000),
+        ),
+        paydays=(),
+        commitments=(),
+    ))
+
+
+@pytest.mark.parametrize(
+    ("start", "end"),
+    [
+        ("2026-01-01T00:00:00Z", "2026-02-01T00:00:00Z"),
+        ("2026-08-31T23:00:00Z", "2026-09-30T23:00:00Z"),
+    ],
+)
+def test_boundary_validation_accepts_exact_london_midnight(
+    start: str, end: str,
+) -> None:
+    history_manifest = HistoryManifest(
+        dataset_id="synthetic-v2",
+        account_id="synthetic-current",
+        currency="GBP",
+        coverage_start=start,
+        coverage_end=end,
+    )
+    validate_anchor_reconciliation(HistoryBundle(
+        manifest=history_manifest,
+        raw_records=(),
+        transactions=(),
+        anchors=(balance_anchor(start, 100_000), balance_anchor(end, 100_000)),
+        paydays=(),
+        commitments=(),
+    ))
+
+
+def test_boundary_validation_rejects_non_midnight_manifest_instants() -> None:
+    history_manifest = HistoryManifest(
+        dataset_id="synthetic-v2",
+        account_id="synthetic-current",
+        currency="GBP",
+        coverage_start="2026-01-01T01:00:00Z",
+        coverage_end="2026-02-01T01:00:00Z",
+    )
+    bundle = HistoryBundle(
+        manifest=history_manifest,
+        raw_records=(),
+        transactions=(),
+        anchors=(
+            balance_anchor("2026-01-01T01:00:00Z", 100_000),
+            balance_anchor("2026-02-01T01:00:00Z", 100_000),
+        ),
+        paydays=(),
+        commitments=(),
+    )
+
+    with pytest.raises(CoverageError, match="London midnight"):
+        validate_anchor_reconciliation(bundle)
+
+
+def test_reconstruct_balance_retains_closed_right_boundary() -> None:
+    history_manifest = manifest()
+    closing = history_manifest.coverage_end
+    rows = (transaction("at-closing", closing.isoformat(), -2_000),)
+    anchors = (
+        balance_anchor(history_manifest.coverage_start.isoformat(), 100_000),
+        balance_anchor(closing.isoformat(), 98_000),
+    )
+
+    assert reconstruct_balance_minor(
+        datetime(2026, 4, 30, tzinfo=UTC), anchors, rows, history_manifest,
+    ) == 100_000
 
 
 @pytest.mark.parametrize("checkpoint", ["2026-01-10", "2026-01-15", "2026-01-20"])

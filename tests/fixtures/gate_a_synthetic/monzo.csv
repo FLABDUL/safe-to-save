@@ -1,0 +1,61 @@
+Transaction ID,Date,Time,Type,Name,Emoji,Category,Amount,Currency,Local amount,Local currency,Notes and #tags,Address,Receipt,Description,Category split,Money Out,Money In
+synthetic-income-2025-10,28/10/2025,12:00:00,Bacs (Direct Credit),Synthetic Employer,,synthetic-income,2000.00,GBP,2000.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly income,,,2000.00
+synthetic-commitment-2025-10,05/10/2025,12:00:00,Direct Debit,Synthetic Utility,,synthetic-commitment,-100.00,GBP,-100.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly commitment,,100.00,
+synthetic-pot-2025-10,10/10/2025,12:00:00,Pot transfer,Synthetic Reserve Pot,,synthetic-transfer,-25.00,GBP,-25.00,GBP,SYNTHETIC GATE A ONLY,,,Invented Pot movement,,25.00,
+synthetic-refund-2025-10,15/10/2025,12:00:00,Card payment,Synthetic Refund Shop,,synthetic-refund,10.00,GBP,10.00,GBP,SYNTHETIC GATE A ONLY,,,Invented refund,,,10.00
+synthetic-income-2025-11,28/11/2025,12:00:00,Bacs (Direct Credit),Synthetic Employer,,synthetic-income,2000.00,GBP,2000.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly income,,,2000.00
+synthetic-commitment-2025-11,05/11/2025,12:00:00,Direct Debit,Synthetic Utility,,synthetic-commitment,-100.00,GBP,-100.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly commitment,,100.00,
+synthetic-pot-2025-11,10/11/2025,12:00:00,Pot transfer,Synthetic Reserve Pot,,synthetic-transfer,-25.00,GBP,-25.00,GBP,SYNTHETIC GATE A ONLY,,,Invented Pot movement,,25.00,
+synthetic-refund-2025-11,15/11/2025,12:00:00,Card payment,Synthetic Refund Shop,,synthetic-refund,10.00,GBP,10.00,GBP,SYNTHETIC GATE A ONLY,,,Invented refund,,,10.00
+synthetic-income-2025-12,28/12/2025,12:00:00,Bacs (Direct Credit),Synthetic Employer,,synthetic-income,2000.00,GBP,2000.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly income,,,2000.00
+synthetic-commitment-2025-12,05/12/2025,12:00:00,Direct Debit,Synthetic Utility,,synthetic-commitment,-100.00,GBP,-100.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly commitment,,100.00,
+synthetic-pot-2025-12,10/12/2025,12:00:00,Pot transfer,Synthetic Reserve Pot,,synthetic-transfer,-25.00,GBP,-25.00,GBP,SYNTHETIC GATE A ONLY,,,Invented Pot movement,,25.00,
+synthetic-refund-2025-12,15/12/2025,12:00:00,Card payment,Synthetic Refund Shop,,synthetic-refund,10.00,GBP,10.00,GBP,SYNTHETIC GATE A ONLY,,,Invented refund,,,10.00
+synthetic-income-2026-01,28/01/2026,12:00:00,Bacs (Direct Credit),Synthetic Employer,,synthetic-income,2000.00,GBP,2000.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly income,,,2000.00
+synthetic-commitment-2026-01,05/01/2026,12:00:00,Direct Debit,Synthetic Utility,,synthetic-commitment,-100.00,GBP,-100.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly commitment,,100.00,
+synthetic-pot-2026-01,10/01/2026,12:00:00,Pot transfer,Synthetic Reserve Pot,,synthetic-transfer,-25.00,GBP,-25.00,GBP,SYNTHETIC GATE A ONLY,,,Invented Pot movement,,25.00,
+synthetic-refund-2026-01,15/01/2026,12:00:00,Card payment,Synthetic Refund Shop,,synthetic-refund,10.00,GBP,10.00,GBP,SYNTHETIC GATE A ONLY,,,Invented refund,,,10.00
+synthetic-income-2026-02,28/02/2026,12:00:00,Bacs (Direct Credit),Synthetic Employer,,synthetic-income,2000.00,GBP,2000.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly income,,,2000.00
+synthetic-commitment-2026-02,05/02/2026,12:00:00,Direct Debit,Synthetic Utility,,synthetic-commitment,-100.00,GBP,-100.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly commitment,,100.00,
+synthetic-pot-2026-02,10/02/2026,12:00:00,Pot transfer,Synthetic Reserve Pot,,synthetic-transfer,-25.00,GBP,-25.00,GBP,SYNTHETIC GATE A ONLY,,,Invented Pot movement,,25.00,
+synthetic-refund-2026-02,15/02/2026,12:00:00,Card payment,Synthetic Refund Shop,,synthetic-refund,10.00,GBP,10.00,GBP,SYNTHETIC GATE A ONLY,,,Invented refund,,,10.00
+synthetic-income-2026-03,28/03/2026,12:00:00,Bacs (Direct Credit),Synthetic Employer,,synthetic-income,2000.00,GBP,2000.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly income,,,2000.00
+synthetic-commitment-2026-03,05/03/2026,12:00:00,Direct Debit,Synthetic Utility,,synthetic-commitment,-100.00,GBP,-100.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly commitment,,100.00,
+synthetic-pot-2026-03,10/03/2026,12:00:00,Pot transfer,Synthetic Reserve Pot,,synthetic-transfer,-25.00,GBP,-25.00,GBP,SYNTHETIC GATE A ONLY,,,Invented Pot movement,,25.00,
+synthetic-refund-2026-03,15/03/2026,12:00:00,Card payment,Synthetic Refund Shop,,synthetic-refund,10.00,GBP,10.00,GBP,SYNTHETIC GATE A ONLY,,,Invented refund,,,10.00
+synthetic-income-2026-04,28/04/2026,12:00:00,Bacs (Direct Credit),Synthetic Employer,,synthetic-income,2000.00,GBP,2000.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly income,,,2000.00
+synthetic-commitment-2026-04,05/04/2026,12:00:00,Direct Debit,Synthetic Utility,,synthetic-commitment,-100.00,GBP,-100.00,GBP,SYNTHETIC GATE A ONLY,,,Invented monthly commitment,,100.00,
+synthetic-pot-2026-04,10/04/2026,12:00:00,Pot transfer,Synthetic Reserve Pot,,synthetic-transfer,-25.00,GBP,-25.00,GBP,SYNTHETIC GATE A ONLY,,,Invented Pot movement,,25.00,
+synthetic-refund-2026-04,15/04/2026,12:00:00,Card payment,Synthetic Refund Shop,,synthetic-refund,10.00,GBP,10.00,GBP,SYNTHETIC GATE A ONLY,,,Invented refund,,,10.00
+synthetic-card-01,06/10/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-02,13/10/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-03,20/10/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-04,27/10/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-05,03/11/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-06,10/11/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-07,17/11/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-08,24/11/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-09,01/12/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-10,08/12/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-11,15/12/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-12,22/12/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-13,29/12/2025,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-14,05/01/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-15,12/01/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-16,19/01/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-17,26/01/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-18,02/02/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-19,09/02/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-20,16/02/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-21,23/02/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-22,02/03/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-23,09/03/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-24,16/03/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-25,23/03/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-26,30/03/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-27,06/04/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-card-28,13/04/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-40.00,GBP,-40.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,40.00,
+synthetic-card-29,20/04/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-50.00,GBP,-50.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,50.00,
+synthetic-card-30,27/04/2026,12:00:00,Card payment,Synthetic Weekly Shop,,synthetic-variable,-60.00,GBP,-60.00,GBP,SYNTHETIC GATE A ONLY,,,Invented weekly purchase,,60.00,
+synthetic-transfer-out,20/02/2026,12:00:00,Bank transfer,Synthetic Internal Account,,synthetic-transfer,-30.00,GBP,-30.00,GBP,SYNTHETIC GATE A ONLY,,,Invented internal transfer out,,30.00,
+synthetic-transfer-in,21/02/2026,12:00:00,Bank transfer,Synthetic Internal Account,,synthetic-transfer,30.00,GBP,30.00,GBP,SYNTHETIC GATE A ONLY,,,Invented internal transfer in,,,30.00

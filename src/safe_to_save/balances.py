@@ -2,9 +2,13 @@
 
 from collections.abc import Sequence
 from datetime import UTC, datetime
-from itertools import pairwise
 
-from safe_to_save.contracts import BalanceAnchor, CanonicalTransaction, HistoryManifest
+from safe_to_save.contracts import (
+    BalanceAnchor,
+    CanonicalTransaction,
+    HistoryBundle,
+    HistoryManifest,
+)
 
 
 class CoverageError(ValueError):
@@ -31,20 +35,18 @@ def reconstruct_balance_minor(
     if checkpoint_utc > manifest.coverage_end:
         raise CoverageError("checkpoint is after coverage_end")
 
-    covered_anchors = sorted(
-        (anchor for anchor in anchors
-         if manifest.coverage_start <= anchor.captured_at <= manifest.coverage_end),
-        key=lambda anchor: anchor.captured_at,
-    )
-    for earlier, later in pairwise(covered_anchors):
-        net_flow = sum(
-            row.amount_minor for row in transactions
-            if earlier.captured_at < row.occurred_at <= later.captured_at
-        )
-        if earlier.balance_minor + net_flow != later.balance_minor:
-            if earlier.captured_at == later.captured_at:
-                raise CoverageError("ambiguous balance anchors at the same instant")
-            raise CoverageError("inconsistent balance anchors across covered interval")
+    # Import here to keep gate preparation's public validator as the single rule
+    # without creating a module import cycle.
+    from safe_to_save.gate_prepare import validate_anchor_reconciliation
+
+    validate_anchor_reconciliation(HistoryBundle(
+        manifest=manifest,
+        raw_records=(),
+        transactions=tuple(transactions),
+        anchors=tuple(anchors),
+        paydays=(),
+        commitments=(),
+    ), require_boundaries=False)
 
     later_anchors = tuple(
         anchor for anchor in anchors if anchor.captured_at >= checkpoint_utc

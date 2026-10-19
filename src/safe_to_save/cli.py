@@ -10,6 +10,11 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import psycopg
 
 from safe_to_save.db import apply_migrations
+from safe_to_save.gate_assess import GateDecision, assess_gate, load_gate_evidence
+from safe_to_save.gate_config import load_gate_config
+from safe_to_save.gate_evaluate import evaluate_gate
+from safe_to_save.gate_prepare import prepare_private_history
+from safe_to_save.gate_report import write_gate_report
 from safe_to_save.history import HistoryConflictError, load_history
 from safe_to_save.paycycles import ReviewSchedule
 from safe_to_save.repository import HistoryRepository
@@ -57,13 +62,63 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--data-label", choices=("Synthetic demonstration", "Private evaluation"),
                      required=True)
     run.add_argument("--output", type=Path, required=True)
+    gate = commands.add_parser("gate-a").add_subparsers(dest="action", required=True)
+    for action in ("prepare", "evaluate", "assess"):
+        gate.add_parser(action).add_argument("--config", type=Path, required=True)
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+    stage = f"gate-a {args.action}" if args.command == "gate-a" else None
     try:
+        if args.command == "gate-a":
+            config = load_gate_config(args.config, Path.cwd())
+            if args.action == "prepare":
+                result = prepare_private_history(config)
+                if result.status == "fix_data_or_policy":
+                    print(
+                        f"{stage}: status=fix_data_or_policy; error=PreparationRejected; "
+                        "no report was published.",
+                        file=sys.stderr,
+                    )
+                    return 1
+                print(f"{stage}: status={result.status}.")
+                return 0
+            if args.action == "evaluate":
+                settings = Settings.from_environment()
+                repository = HistoryRepository(settings.database_url)
+                evaluation_config = config.model_copy(update={
+                    "output_directory": config.output_directory / "evaluation",
+                })
+                result = evaluate_gate(evaluation_config, repository)
+                if result.status == "fix_data_or_policy":
+                    print(
+                        f"{stage}: status=fix_data_or_policy; error=EvaluationRejected; "
+                        "no report was published.",
+                        file=sys.stderr,
+                    )
+                    return 1
+                print(f"{stage}: status={result.status}; scenarios={len(result.scenarios)}.")
+                return 0
+            bundle = load_history(config.canonical_directory)
+            evidence = load_gate_evidence(config.output_directory / "evaluation")
+            assessment = assess_gate(config, bundle, evidence)
+            write_gate_report(config.output_directory / "assessment", assessment)
+            if assessment.decision is GateDecision.FIX_DATA_OR_POLICY:
+                print(
+                    f"{stage}: status=fix_data_or_policy; error=AssessmentRejected; "
+                    "aggregate report was published.",
+                    file=sys.stderr,
+                )
+                return 1
+            print(
+                f"{stage}: status={assessment.decision.value}; "
+                "files=gate-a-report.json,gate-a-report.md."
+            )
+            return 0
+
         settings = Settings.from_environment()
         repository = HistoryRepository(settings.database_url)
         if args.command == "db":
@@ -92,6 +147,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     except (ValueError, RuntimeError, OSError, psycopg.Error) as exc:
         # Validation/database exceptions can contain raw payloads, personal values
         # or connection details. Keep terminal output to a safe validation status.
-        print(f"Validation failed ({type(exc).__name__}); no report was published.", file=sys.stderr)
+        if stage is not None:
+            publication = (
+                "report publication was not confirmed."
+                if stage == "gate-a assess" else "no report was published."
+            )
+            print(
+                f"{stage}: status=failed; error={type(exc).__name__}; {publication}",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"Validation failed ({type(exc).__name__}); no report was published.",
+                file=sys.stderr,
+            )
         return 1
     return 0

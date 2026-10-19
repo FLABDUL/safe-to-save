@@ -1,0 +1,4 @@
+Transaction ID,Date,Time,Type,Name,Emoji,Category,Amount,Currency,Local amount,Local currency,Notes and #tags,Address,Receipt,Description,Category split,Money Out,Money In
+synthetic-card,15/07/2026,12:30:00,Card payment,Synthetic Cafe,,synthetic,-12.34,GBP,-12.34,GBP,SYNTHETIC ONLY,,,Invented purchase,,12.34,
+synthetic-refund,16/07/2026,12:30:00,Card payment,Synthetic Shop,,synthetic,5.00,GBP,5.00,GBP,SYNTHETIC ONLY,,,Invented refund,,,5.00
+synthetic-pot,17/07/2026,12:30:00,Pot transfer,Synthetic Pot,,synthetic,-10.00,GBP,-10.00,GBP,SYNTHETIC ONLY,,,Invented saving,,10.00,

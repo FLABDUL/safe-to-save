@@ -6,7 +6,7 @@ import pytest
 from safe_to_save.features import CompletedExample, WithheldExample
 from safe_to_save.history import load_history
 from safe_to_save.paycycles import ReviewSchedule
-from safe_to_save.workflow import build_examples, write_reports
+from safe_to_save.workflow import WorkflowResult, build_examples, write_reports
 
 SCHEDULE = ReviewSchedule(6, time(18), "Europe/London")
 
@@ -54,3 +54,13 @@ def test_render_failure_preserves_both_existing_reports(tmp_path, monkeypatch):
     with pytest.raises(ValueError, match="render failed"):
         write_reports(tmp_path, metadata, ())
     assert {path.name: path.read_bytes() for path in tmp_path.iterdir()} == before
+
+
+def test_workflow_result_exposes_immutable_replay_inputs(tmp_path):
+    result = WorkflowResult("completed", tmp_path, 0, (), (), "a" * 64)
+
+    assert result.examples == ()
+    assert result.observations == ()
+    assert result.input_sha256 == "a" * 64
+    with pytest.raises(AttributeError):
+        result.examples = (object(),)

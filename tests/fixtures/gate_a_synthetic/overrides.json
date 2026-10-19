@@ -1,0 +1,14 @@
+[
+  {
+    "source_line": 60,
+    "economic_type": "internal_transfer",
+    "committed": false,
+    "category": "synthetic-transfer"
+  },
+  {
+    "source_line": 61,
+    "economic_type": "internal_transfer",
+    "committed": false,
+    "category": "synthetic-transfer"
+  }
+]

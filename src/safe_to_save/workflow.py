@@ -89,6 +89,9 @@ class WorkflowResult:
     status: str
     output_directory: Path
     checkpoint_count: int
+    examples: tuple[CompletedExample | WithheldExample, ...]
+    observations: tuple[ReplayObservation, ...]
+    input_sha256: str
 
 
 def run_backtest(
@@ -132,9 +135,11 @@ def run_backtest(
     metadata["input_sha256"] = hashlib.sha256(json.dumps(
         source, sort_keys=True, separators=(",", ":"),
     ).encode("utf-8")).hexdigest()
-    directory = write_reports(output, metadata, tuple(observations))
+    observation_rows = tuple(observations)
+    directory = write_reports(output, metadata, observation_rows)
     return WorkflowResult("noop" if all(row.status == "noop" for row in runs) else "completed",
-                          directory, len(examples))
+                          directory, len(examples), examples, observation_rows,
+                          metadata["input_sha256"])
 
 
 def write_reports(

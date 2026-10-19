@@ -118,7 +118,8 @@ are retained as immutable audit evidence; malformed files fail validation.
 An otherwise valid import containing conflicting transaction IDs is recorded
 as rejected with every parsed source record and its manifest; it creates no
 canonical rows. Malformed files fail before this parsed-evidence audit path.
-No Monzo export converter or live API ingestion is included yet.
+Gate A includes a strict offline adapter for the evidenced Monzo CSV header; it
+is not a live API integration.
 
 ## Leakage controls and interpretation
 
@@ -154,23 +155,39 @@ deficit that existed even without a suggested transfer.
 ## Private evaluation
 
 Keep private inputs and results local. Both `data/private/` and all `outputs/`
-are ignored, as are `.env.local` and the database/log directories. The data label
-is the operator's declaration; the software cannot establish whether data is
-synthetic. Never label personal inputs as a synthetic demonstration.
+are ignored, as are `.env.local` and the database/log directories. Copy
+`config/gate-a.example.json` beneath `data/private/`, replace its synthetic
+placeholders there, and keep every configured input under `data/private/` and
+every configured output under `outputs/private/`. The source export does not
+identify its account, so `account_id` is an operator attestation.
+
+Discover schema with a header-only copy before importing any rows. The adapter
+accepts only the pinned 18-column header. Card payments, Direct Debits, Flex,
+Pot transfers and positive Bacs credits have conservative built-in mappings;
+all ambiguous types require an explicit physical-line override in the private
+override JSON. Never infer ambiguous transfers from their sign or description.
 
 ```powershell
-New-Item -ItemType Directory -Force data/private/history | Out-Null
-# Place the five validated history files here, with a non-public dataset ID.
-.\.venv\Scripts\safe-to-save.exe history import --directory data/private/history
-.\.venv\Scripts\safe-to-save.exe backtest run --dataset-id YOUR_DATASET_ID --review-weekday 6 --review-hour 18 --timezone Europe/London --floor-minor YOUR_FLOOR_IN_MINOR_UNITS --data-label "Private evaluation" --output outputs/private
+.\.venv\Scripts\safe-to-save.exe gate-a prepare --config data/private/gate-a.json
+.\.venv\Scripts\safe-to-save.exe gate-a evaluate --config data/private/gate-a.json
+.\.venv\Scripts\safe-to-save.exe gate-a assess --config data/private/gate-a.json
 ```
 
-Load `DATABASE_URL` privately as in the synthetic instructions. Replace the two
-placeholders with the manifest ID and a non-negative integer floor. Terminal
-and chat output should contain only filenames, counts, coverage dates and
-validation status. Do not paste transactions, balances, merchants, credentials
-or generated private metrics into chat. Private reports must never be copied
-into public documentation; the checked-in evaluation is synthetic only.
+`prepare` validates and publishes canonical local history without database
+access. Before `evaluate`, initialise the dedicated cluster and load
+`DATABASE_URL` privately as in the setup instructions. `assess` verifies the
+saved canonical and replay evidence without creating new replay runs. The
+configured output root keeps replay evidence in `evaluation/` and final reports
+in `assessment/`, so the complete three-command workflow is safely repeatable.
+Terminal output is intentionally aggregate-only. Do not paste transactions,
+balances, merchants, paths, credentials, floors or generated private metrics
+into chat. Real inputs and reports remain local and ignored; private reports
+must never be copied into public documentation.
+
+The public [Gate A synthetic evaluation](docs/gate-a-synthetic-evaluation.md)
+proves the three-stage workflow with wholly invented evidence. The
+[private-evaluation threat model](docs/private-evaluation-threat-model.md)
+documents the remaining boundaries and operational risks.
 
 The immediate next milestone is an evidence-led private evaluation against
 these baselines, including enough completed comparable cycles to measure

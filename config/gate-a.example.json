@@ -1,0 +1,21 @@
+{
+  "$comment": "Synthetic placeholders only. Every money value (including any *_minor value) in this file is invented and illustrative: floors.lower, floors.primary and floors.higher are integer minor units, never operational personal floors. Copy this example beneath data/private before supplying private values.",
+  "schema_version": "gate-a-v1",
+  "as_of_date": "2026-10-09",
+  "period_start": "2026-04-01",
+  "period_end_exclusive": "2026-10-01",
+  "dataset_id": "synthetic-example-dataset",
+  "account_id": "synthetic-example-account",
+  "source_csv": "data/private/synthetic-example/source.csv",
+  "overrides_path": "data/private/synthetic-example/overrides.json",
+  "anchors_path": "data/private/synthetic-example/anchors.json",
+  "paydays_path": "data/private/synthetic-example/paydays.json",
+  "commitments_path": "data/private/synthetic-example/commitments.json",
+  "canonical_directory": "outputs/private/synthetic-example/canonical",
+  "output_directory": "outputs/private/synthetic-example/reports",
+  "floors": {
+    "lower": 10000,
+    "primary": 25000,
+    "higher": 40000
+  }
+}
