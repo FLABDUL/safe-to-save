@@ -1,5 +1,10 @@
 # Safe to Save project rules
 
+For Linux Cloud setup and context recovery, read `docs/cloud.md`.
+Setup: `bash scripts/cloud/setup.sh`; equivalent Linux verification:
+`bash scripts/cloud/verify.sh`. The Cloud database is synthetic-only because
+integration tests clear application tables. Private evaluations remain separate.
+
 Safe to Save is an offline-first, unaffiliated portfolio project. Milestone 1
 is an offline evaluation pipeline only: it must not call Monzo, expose an HTTP
 service, serve a dashboard, use an LLM or probabilistic model, or move money.

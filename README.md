@@ -1,5 +1,8 @@
 # Safe to Save
 
+For Linux Cloud development with synthetic data and context recovery, see
+[Cloud setup](docs/cloud.md).
+
 Safe to Save is a portfolio project for evaluating a payday-aware weekly
 spending recommendation from historical transaction data. It is unaffiliated
 with Monzo and does not represent Monzo's products, services or advice.
