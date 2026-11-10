@@ -14,3 +14,6 @@ outputs/private/
 outputs/
 *.joblib
 *.pkl
+
+# Cloud-only synthetic PostgreSQL state and credentials
+.cloud/
